@@ -7,8 +7,6 @@ class_name Controls
 @export var zoom_step: float = .05
 @export var sensitivity: float = 0.1
 
-@onready var _mobile_controls = $MobileControls
-
 var _move_vec: Vector2 = Vector2.ZERO
 var _cam_rot: Vector2 = Vector2.ZERO
 var _zoom_scale: float = 0
@@ -106,4 +104,3 @@ func get_zoom_scale():
 
 func set_zoom_scale(zoom_scale):
 	_zoom_scale = zoom_scale
-	_mobile_controls.set_zoom_scale(zoom_scale)

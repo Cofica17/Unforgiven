@@ -19,11 +19,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player/Controls.gd"
 }, {
-"base": "Control",
-"class": &"MobileControls",
-"language": &"GDScript",
-"path": "res://player/MobileControls.gd"
-}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -43,27 +38,14 @@ _global_script_classes=[{
 "class": &"StateMachine",
 "language": &"GDScript",
 "path": "res://scripts/StateMachine.gd"
-}, {
-"base": "Control",
-"class": &"VirtualButton",
-"language": &"GDScript",
-"path": "res://ui/VirtualButton.gd"
-}, {
-"base": "Control",
-"class": &"VirtualThumbStick",
-"language": &"GDScript",
-"path": "res://ui/VirtualThumbStick.gd"
 }]
 _global_script_class_icons={
 "ControllableCamera": "",
 "Controls": "",
-"MobileControls": "",
 "Player": "",
 "PlayerState": "",
 "State": "",
-"StateMachine": "",
-"VirtualButton": "",
-"VirtualThumbStick": ""
+"StateMachine": ""
 }
 
 [application]
