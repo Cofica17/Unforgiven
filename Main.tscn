@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://duugmnauemcc7"]
+
+[ext_resource type="PackedScene" uid="uid://c0vnqt6uyxaoa" path="res://player/Player.tscn" id="1"]
+[ext_resource type="Material" uid="uid://c560kh0cq42t2" path="res://assets/materials/Concrete.tres" id="2_4xuie"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ukb2j"]
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("ProceduralSkyMaterial_ukb2j")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("1")
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.652085, -0.491636, 0.57713, -0.0626096, 0.793559, 0.605263, -0.755556, 0.358549, -0.548249, 0, 2.70409, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5366, 1, 0)
+size = Vector3(100, 2, 100)
+material = ExtResource("2_4xuie")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24706, 1.96053, 4.67049)
+collision_mask = 5
