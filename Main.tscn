@@ -7,9 +7,11 @@
 
 [sub_resource type="Sky" id="1"]
 sky_material = SubResource("ProceduralSkyMaterial_ukb2j")
+process_mode = 1
 
 [sub_resource type="Environment" id="2"]
 background_mode = 2
+background_energy_multiplier = 1.47
 sky = SubResource("1")
 
 [node name="Main" type="Node3D"]

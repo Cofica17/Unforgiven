@@ -19,6 +19,7 @@ var _is_touchscreen: bool = false
 var _is_swimming_up: bool = false
 var _is_swimming_down: bool = false
 var _is_surging: bool = false
+var _is_primary_attack: bool = false
 
 func _ready():
 	# wait until the parent node is ready
@@ -44,6 +45,7 @@ func _process(delta):
 	_is_swimming_up = Input.is_action_pressed("swim_up")
 	_is_swimming_down = Input.is_action_pressed("swim_down")
 	_is_surging = Input.is_action_pressed("surge")
+	_is_primary_attack = Input.is_action_just_pressed("primary_attack")
 
 func _input(event):
 	# checked non-touchscreen devices toggle the mouse cursor's capture mode when the ui_cancel action is
@@ -101,6 +103,9 @@ func get_camera_rotation():
 
 func get_zoom_scale():
 	return _zoom_scale
+
+func is_primary_attack():
+	return _is_primary_attack
 
 func set_zoom_scale(zoom_scale):
 	_zoom_scale = zoom_scale
