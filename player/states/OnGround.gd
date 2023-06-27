@@ -12,8 +12,8 @@ func process(delta):
 		# if the player is crouching, transition to the Crouching state, which will determine actual
 		# sub state (e.g. stopped or moving) checked its own
 		state_machine.transition_to("Crouching")
-	elif player.controls.is_primary_attack():
-		state_machine.transition_to("OnGround/PrimaryAttack")
+	elif player.controls.is_primary_attack() and player.controls.is_sprinting():
+		state_machine.transition_to("OnGround/RunningAttack")
 	elif player.controls.is_dashing() && player.dash_timer.is_stopped():
 		# if the player is trying to dash and if they CAN dash, transition to the OnGround/Dashing state
 		state_machine.transition_to("OnGround/Dashing")
@@ -26,4 +26,4 @@ func process(delta):
 
 func physics_process(delta):
 	# set the checked ground blend position to player's horizontal speed divided by 10, the running speed
-	player.anim_tree.set("parameters/OnGround/blend_position", player.horizontal_velocity.length() / $Running.move_speed)
+	player.anim_tree.set("parameters/OnGround/blend_position", player.horizontal_velocity.length()/5.0)

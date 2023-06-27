@@ -16,7 +16,7 @@ func physics_process(delta):
 	# call physics_process method of the the super class (State) which in turn calls the physics_process
 	# method of the parent state (the super class is not the same as the parent state)
 	super.physics_process(delta)
-
+	
 	# if the player is not going to jump again, transition to the InAir/Falling state
 	if !_will_jump:
 		state_machine.transition_to("InAir/Falling")

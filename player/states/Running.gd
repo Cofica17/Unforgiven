@@ -6,6 +6,9 @@ extends PlayerState
 @export var acceleration: float = 10
 @export var cam_follow_speed: float = 8
 
+func enter():
+	player.anim_tree.set("parameters/RootState/current", 2)
+
 func physics_process(delta):
 	# call physics_process method of the the super class (State) which in turn calls the physics_process
 	# method of the parent state (the super class is not the same as the parent state)
