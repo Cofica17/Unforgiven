@@ -45,7 +45,7 @@ func _process(delta):
 	_is_swimming_up = Input.is_action_pressed("swim_up")
 	_is_swimming_down = Input.is_action_pressed("swim_down")
 	_is_surging = Input.is_action_pressed("surge")
-	_is_primary_attack = Input.is_action_just_pressed("primary_attack")
+	_is_primary_attack = InputBuffer.is_action_press_buffered("primary_attack")
 
 func _input(event):
 	# checked non-touchscreen devices toggle the mouse cursor's capture mode when the ui_cancel action is
