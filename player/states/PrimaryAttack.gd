@@ -5,7 +5,6 @@ extends PlayerState
 var cur_anim_idx = 1
 
 func enter():
-	cur_anim_idx = 1
 	play_next_anim()
 
 func process(delta):
@@ -13,7 +12,7 @@ func process(delta):
 	pass
 
 func physics_process(delta):
-	set_horizontal_movement(0.0, 0.0, 0.0, 2.5, delta)
+	set_horizontal_movement(0.1, 0.0, 0.0, 1.5, delta)
 	
 	if player.controls.is_primary_attack() and attack_timer.is_stopped():
 		play_next_anim()
@@ -46,3 +45,9 @@ func play_anim(anim:String):
 	cur_anim_idx += 1
 	if cur_anim_idx > 3:
 		cur_anim_idx = 1
+
+func _on_running_attack_running_sword_attack_ended():
+	cur_anim_idx +=1
+
+func exit():
+	cur_anim_idx = 1
