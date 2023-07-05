@@ -13,8 +13,12 @@ func _ready():
 	attack_timer = Timer.new()
 	attack_timer.one_shot = true
 	add_child(attack_timer)
+	connect("attack_anim_playing", player.set_sword_collision_enabled)
 
 func enter():
+	if not player.anim_tree.animation_finished.is_connected(_on_animation_tree_animation_finished):
+		player.anim_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+	
 	play_anim()
 	attack_timer.start(attack_window)
 
