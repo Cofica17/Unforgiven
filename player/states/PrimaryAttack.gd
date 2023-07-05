@@ -30,9 +30,7 @@ func physics_process(delta):
 
 func _on_animation_tree_animation_finished(anim):
 	emit_signal("attack_anim_playing", false)
-#	if player.controls.is_primary_attack():
-#		state_machine.transition_to("OnGround/Attacks/"+next_state)
-#	else:
+	
 	player.anim_tree.set("parameters/RootState/transition_request", "on-ground")
 	state_machine.transition_to("OnGround")
 
