@@ -1,12 +1,13 @@
 extends PlayerState
 
-signal running_sword_attack_ended
+signal running_attack_anim_playing
 
 @onready var attack_timer = $AttackTimer
 
 var attack_window = 0.9
 
 func enter():
+	emit_signal("running_attack_anim_playing", true)
 	player.anim_tree.set("parameters/AttackState/transition_request", "running_attack")
 	player.anim_tree.set("parameters/RootState/transition_request", "attack")
 	attack_timer.start(attack_window)
@@ -27,5 +28,5 @@ func _on_attack_timer_timeout():
 		play_next_anim()
 
 func play_next_anim():
-	emit_signal("running_sword_attack_ended")
+	emit_signal("running_attack_anim_playing", false)
 	state_machine.transition_to("OnGround/PrimaryAttack")

@@ -1,5 +1,7 @@
 extends PlayerState
 
+signal attack_anim_playing(v)
+
 @onready var attack_timer:Timer = $AttackTimer
 
 var cur_anim_idx = 1
@@ -10,7 +12,7 @@ func enter():
 func process(delta):
 	# we'll handle state transitions ourselves
 	pass
-
+ 
 func physics_process(delta):
 	set_horizontal_movement(0.1, 0.0, 0.0, 1.5, delta)
 	
@@ -18,6 +20,7 @@ func physics_process(delta):
 		play_next_anim()
 
 func _on_animation_tree_animation_finished(anim):
+	emit_signal("attack_anim_playing", false)
 	if player.controls.is_primary_attack() and "Sword_Attack_" in anim:
 		play_next_anim()
 	else:
@@ -32,6 +35,7 @@ func play_next_anim():
 	play_anim("primary_attack_"+str(cur_anim_idx))
 
 func play_anim(anim:String):
+	emit_signal("attack_anim_playing", true)
 	match cur_anim_idx:
 		1:
 			attack_timer.start(0.77)
@@ -46,8 +50,8 @@ func play_anim(anim:String):
 	if cur_anim_idx > 3:
 		cur_anim_idx = 1
 
-func _on_running_attack_running_sword_attack_ended():
-	cur_anim_idx +=1
-
 func exit():
 	cur_anim_idx = 1
+
+func _on_running_attack_running_attack_anim_playing():
+	cur_anim_idx +=1
