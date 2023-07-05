@@ -29,4 +29,4 @@ func _on_attack_timer_timeout():
 
 func play_next_anim():
 	emit_signal("running_attack_anim_playing", false)
-	state_machine.transition_to("OnGround/PrimaryAttack")
+	state_machine.transition_to("OnGround/Attacks/PrimaryAttack1")

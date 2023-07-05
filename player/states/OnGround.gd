@@ -13,9 +13,9 @@ func process(delta):
 		# sub state (e.g. stopped or moving) checked its own
 		state_machine.transition_to("Crouching")
 	elif player.controls.is_primary_attack() and player.is_sprinting():
-		state_machine.transition_to("OnGround/RunningAttack")
+		state_machine.transition_to("OnGround/Attacks/RunningAttack")
 	elif player.controls.is_primary_attack():
-		state_machine.transition_to("OnGround/PrimaryAttack")
+		state_machine.transition_to("OnGround/Attacks/PrimaryAttack1")
 	elif player.controls.is_dashing() && player.dash_timer.is_stopped():
 		# if the player is trying to dash and if they CAN dash, transition to the OnGround/Dashing state
 		state_machine.transition_to("OnGround/Dashing")

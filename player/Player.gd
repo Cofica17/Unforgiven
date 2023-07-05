@@ -30,7 +30,6 @@ func _physics_process(delta):
 	# the movement state machine
 	velocity = Vector3(horizontal_velocity.x, y_velocity, horizontal_velocity.z)
 	move_and_slide()
-	print(velocity.length())
 
 func _on_DeepWaterDetector_area_entered(area):
 	# entered a deep enough water to swim in, transition to the Swimming/Diving state
