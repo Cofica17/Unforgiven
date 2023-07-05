@@ -16,6 +16,7 @@ signal movement_state_changed(new_state)
 @onready var sm_movement: StateMachine = $Movement
 @onready var dash_timer: Timer = $DashTimer
 @onready var sword = $Skin/CharacterModel/main_character/Armature/Skeleton3D/BoneAttachment3D/Sword
+@onready var attack_collision_area = $Skin/AttackCollisionArea
 
 var horizontal_velocity: Vector3 = Vector3.ZERO
 var y_velocity: float = 0
@@ -49,11 +50,12 @@ func has_movement():
 	# vectors are approximately zero. otherwise it means they have movement
 	return controls.get_movement_vector() != Vector2.ZERO || !velocity.is_equal_approx(Vector3.ZERO)
 
-func _on_sword_enemy_hit(enemy):
-	enemy.on_hit()
-
 func is_sprinting():
 	return velocity.length() >= sprint_cutoff and controls.is_sprinting()
 
 func set_sword_collision_enabled(v):
-	sword.set_collision_active(v)
+	attack_collision_area.monitoring = v
+
+func _on_attack_collision_area_body_entered(body):
+	if body is Enemy:
+		body.on_hit()
