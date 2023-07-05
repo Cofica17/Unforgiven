@@ -12,7 +12,7 @@ func process(delta):
 		# if the player is crouching, transition to the Crouching state, which will determine actual
 		# sub state (e.g. stopped or moving) checked its own
 		state_machine.transition_to("Crouching")
-	elif player.controls.is_primary_attack() and player.controls.is_sprinting():
+	elif player.controls.is_primary_attack() and player.is_sprinting():
 		state_machine.transition_to("OnGround/RunningAttack")
 	elif player.controls.is_primary_attack():
 		state_machine.transition_to("OnGround/PrimaryAttack")

@@ -32,6 +32,7 @@ func _on_attack_timer_timeout():
 		play_next_anim()
 
 func play_next_anim():
+	print("primary_attack_"+str(cur_anim_idx))
 	play_anim("primary_attack_"+str(cur_anim_idx))
 
 func play_anim(anim:String):
@@ -53,5 +54,6 @@ func play_anim(anim:String):
 func exit():
 	cur_anim_idx = 1
 
-func _on_running_attack_running_attack_anim_playing():
-	cur_anim_idx +=1
+func _on_running_attack_running_attack_anim_playing(v):
+	if v:
+		cur_anim_idx = 1

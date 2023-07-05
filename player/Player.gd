@@ -5,6 +5,7 @@ class_name Player
 signal movement_state_changed(new_state)
 
 @export var max_slope_angle: float = 50
+@export var sprint_cutoff: float = 3.5
 
 @onready var skin: Node3D = $Skin
 @onready var camera: ControllableCamera = $CamRoot/ControllableCamera
@@ -29,6 +30,7 @@ func _physics_process(delta):
 	# the movement state machine
 	velocity = Vector3(horizontal_velocity.x, y_velocity, horizontal_velocity.z)
 	move_and_slide()
+	print(velocity.length())
 
 func _on_DeepWaterDetector_area_entered(area):
 	# entered a deep enough water to swim in, transition to the Swimming/Diving state
@@ -49,3 +51,6 @@ func has_movement():
 
 func _on_sword_enemy_hit(enemy):
 	enemy.on_hit()
+
+func is_sprinting():
+	return velocity.length() >= sprint_cutoff and controls.is_sprinting()
