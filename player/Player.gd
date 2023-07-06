@@ -59,3 +59,6 @@ func set_sword_collision_enabled(v):
 func _on_attack_collision_area_body_entered(body):
 	if body is Enemy:
 		body.on_hit()
+
+func get_current_look_at_dir():
+	return Vector3.FORWARD.rotated(Vector3.UP, skin.rotation.y).normalized()

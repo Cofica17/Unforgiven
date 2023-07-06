@@ -93,6 +93,7 @@ transform = Transform3D(0.623524, 0, -0.781804, 0, 1, 0, 0.781804, 0, 0.623524, 
 
 [node name="Node3D2" type="Node3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326988, 0)
+visible = false
 
 [node name="StonePlatform3" parent="Node3D/Node3D2" instance=ExtResource("4_sgcwb")]
 transform = Transform3D(2, 0, 0, 0, 0.309, 0, 0, 0, 2, -37.5238, 1.65207, -20.4568)

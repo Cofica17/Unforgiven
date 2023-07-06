@@ -13,7 +13,7 @@ func enter():
 	player.dash_timer.start()
 
 	# get the player's current look direction
-	var direction = Vector3.FORWARD.rotated(Vector3.UP, player.skin.rotation.y).normalized()
+	var direction = player.get_current_look_at_dir()
 
 	# and set the player's horizontal velocity based on the angle and the dash speed
 	player.horizontal_velocity = direction * dash_power
